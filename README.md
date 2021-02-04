@@ -35,7 +35,7 @@ functionalities:
 ### Frontend
 The frontend was built in React with Hooks and Redux. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 list of major frameworks and library that was used to built this project.
-* [react](https://reactjs.org/)
+* [React](https://reactjs.org/)
 * [Typescript](https://www.typescriptlang.org/)
 * [Redux](https://redux.js.org/)
 * [redux-saga](https://redux-saga.js.org/)
@@ -48,6 +48,7 @@ list of major frameworks and library that was used to built this project.
 * [Flexbox css](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 * [css grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 * [localstorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+* [material-ui](https://material-ui.com/)
 
 ### Backend
 The backend was biult made in Express, list of major frameworks and library that was used to build this project.
@@ -58,15 +59,7 @@ The backend was biult made in Express, list of major frameworks and library that
 * [passport-jwt](http://www.passportjs.org/packages/passport-jwt/)
 * [cloudinary](https://cloudinary.com/)
 * [mongoose](https://mongoosejs.com/)
-
-Free to you to use the service you want to do that and to store your assets (like Cloudinary for example).
-
-The purpose is to enhance post with media.
-
-You can design the layout you want on cards and on each post page and use the styling you want.
-
-We want you to use JWT to manage user session https://jwt.io/, to do that you can use passport with a JWT policy.
-
+* [multer](https://www.npmjs.com/package/multer)
 
 ### Testing
 This project has tests on components, reducer, functions/utils and actions, run `yarn test`.
