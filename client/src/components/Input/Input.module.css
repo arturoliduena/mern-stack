@@ -1,0 +1,78 @@
+/** END: Non Openmrs CSS **/
+.input_group {
+  margin-bottom: 20px;
+  position: relative;
+	width: 80%;
+	min-height: 84px;
+}
+
+/* Input*/
+.input_underlined > .input {
+	border: none;
+	border-bottom: 1px solid var(--color-ink-medium-contrast);
+	width: 100%;
+	font-size: 14px;
+	padding-left: 14px;
+	line-height: 147%;
+	padding-top: 24px;
+	padding-bottom: 5px;
+	resize: none;
+}
+
+.input_underlined {
+	width: 100%;
+}
+
+.input_underlined > .input:focus {
+	outline: none;
+}
+
+.input_underlined > .input_label {
+	position: absolute;
+	top: 12px;
+	left: 8px;
+	line-height: 147%;
+	color: var(--color-ink-medium-contrast);
+	transition: top .2s;
+}
+
+.input_underlined > .input_helper {
+	font-size: 12px;
+	color: var(--color-ink-medium-contrast);
+	margin: 1px 10px;
+}
+
+.input_underlined > .input:hover {
+	background: var(--color-interaction-minus-two);
+	border-color: var(--color-ink-high-contrast);
+}
+
+.input_underlined > .input:focus + .input_label,
+.input_underlined > .input:valid + .input_label {
+	top: 0;
+	font-size: 14px;
+	margin-bottom: 32px;
+	color: var(--color-green);
+}
+
+.input_underlined:not(.input_error) > .input:focus + .input_label {
+	color: var(--color-green);
+}
+
+.input_underlined:not(.input_error) > .input:focus {
+	border-color: var(--color-green);
+}
+
+/** ERROR **/
+
+.input_underlined.input_error > .input_label, .input_underlined.input_error > .input_helper {
+	color: var(--color-error);
+}
+
+.input_error > .input {
+	border-color: var(--color-error);
+}
+
+.input_underlined > .input {
+	background: var(--color-bg-high-contrast);
+}

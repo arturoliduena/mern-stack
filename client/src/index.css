@@ -1,8 +1,31 @@
-body {
-  margin: 0;
-  background: #fafafa !important;
+:root {
+  /* CSS HEX */
+  --color-primary-blue: #1ecde2;
+  --color-green: #16a085;
+	--color-error: #b50706;
+  --color-ink-low-contrast: rgba(60, 60, 67, 0.3);
+	--color-ink-medium-contrast: rgba(19, 19, 21, 0.6);
+	--color-interaction: #1e4bd1;
+	--color-interaction-minus-two: rgba(73, 133, 224, 0.12);
+	--color-bg-low-contrast: #eff1f2;
+	--color-ink-high-contrast: #121212;
+  --color-bg-high-contrast: #ffffff;
 }
 
 * {
-  outline: none;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }

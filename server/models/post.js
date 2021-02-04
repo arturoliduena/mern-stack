@@ -5,8 +5,10 @@ const postSchema = new Schema({
     name: { type: 'String', required: true },
     title: { type: 'String', required: true },
     content: { type: 'String', required: true },
+    image_url: { type: 'String' },
     slug: { type: 'String', required: true },
     cuid: { type: 'String', required: true },
+    user_id: { type: 'String', required: true },
     dateAdded: { type: 'Date', default: Date.now, required: true },
 });
 
