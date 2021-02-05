@@ -13,6 +13,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { deletePost } from '../../store/actions/post';
@@ -42,12 +43,17 @@ const useStyles = makeStyles((theme: Theme) =>
     avatar: {
       backgroundColor: 'primary',
     },
+    spinner: {
+      display: 'flex',
+      margin: '0 auto',
+    }
   }),
 );
 
 function PostListItem({ post }: Props) {
   const dispatch = useDispatch();
-  const [ isFavorite, setIsFavorite ] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFavorite, setIsFavorite] = useState(false)
   const user_id = useSelector((state: RootState) => state.auth.user?.id);
   const favorites = useSelector((state: RootState) => state.favorite)
   const classes = useStyles();
@@ -56,12 +62,22 @@ function PostListItem({ post }: Props) {
     setIsFavorite(favorites.includes(post.cuid))
   }, [favorites]);
 
+  useEffect(() => {
+    if (post) {
+      const img = new Image();
+      img.src = post.image_url;
+      img.onload = () => {
+        setIsLoading(false);
+      }
+    }
+  }, [post]);
+
   const onDelete = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (confirm('Do you want to delete this post')) { // eslint-disable-line
       dispatch(deletePost(post.cuid));
     }
   };
-  
+
   const handleFavavorite = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     dispatch(!isFavorite ? addFav(post.cuid) : removeFav(post.cuid));
   };
@@ -82,12 +98,16 @@ function PostListItem({ post }: Props) {
         title={post.name}
         subheader={toDateString(post.dateAdded)}
       />
-      <CardMedia
-        className={classes.media}
-        image={post.image_url}
-      />
+      {
+        isLoading ?
+          <CircularProgress className={classes.spinner} size={100} /> :
+          <CardMedia
+            className={classes.media}
+            image={post.image_url}
+          />
+      }
       <CardContent>
-      <Typography gutterBottom variant="h5" component="h2">
+        <Typography gutterBottom variant="h5" component="h2">
           <Link to={`/posts/${post.cuid}/${post.slug}`} >
             {post.title}
           </Link>
@@ -101,13 +121,13 @@ function PostListItem({ post }: Props) {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={handleFavavorite}>
-          { isFavorite ? <FavoriteIcon color='error' /> : <FavoriteBorderIcon /> }
+          {isFavorite ? <FavoriteIcon color='error' /> : <FavoriteBorderIcon />}
         </IconButton>
         {
-          user_id == post.user_id ? 
-          <IconButton aria-label="Delete" onClick={onDelete}>
-            <DeleteIcon />
-          </IconButton> : null
+          user_id == post.user_id ?
+            <IconButton aria-label="Delete" onClick={onDelete}>
+              <DeleteIcon />
+            </IconButton> : null
         }
       </CardActions>
     </Card>
