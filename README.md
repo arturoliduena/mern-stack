@@ -26,9 +26,7 @@ functionalities:
 
 • The user information for login and the fav list are stored in a DB (MongoDB).
 
-• we added some tests.
-
-• Pagination.
+• Users can add favorites post.
 
 • Preload images and a loader.
 
